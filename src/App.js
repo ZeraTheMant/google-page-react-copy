@@ -21,6 +21,34 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import name from './name.png'
 import GoogleLogo from './google.png'
 
+const MidButtons = () => {
+	const classes = useStyles()	
+	
+	return (
+		<Grid container justifyContent="center" spacing={2} className={classes.midButtonsContainer}>
+		<Grid item>
+			<Button 
+				style={{ textTransform: 'none' }} 
+				variant="contained"
+				className={classes.midButton}
+			>
+				Google Search
+			</Button>
+		</Grid>
+		
+		<Grid item>
+			<Button 
+				style={{ textTransform: 'none' }} 
+				variant="contained"
+				className={classes.midButton}
+			>
+				I'm Feeling Lucky
+			</Button>
+		</Grid>						
+	</Grid>
+	)
+}
+
 const useStyles = makeStyles({
 	topSection: {
 		background: 'white',
@@ -125,7 +153,15 @@ const useStyles = makeStyles({
 	},
 	block: { display: 'block' },
 	hidden: { display: 'none' },
-	
+	recommendation: {
+   [`&:hover`]: {
+			background: '#f2f2f2'
+   },
+   margin: 0,
+	 width: '100%',
+   alignItems: 'center',
+   padding: '0 10px'		
+	},
 	/*box: {
 		display: 'flex',
 		flexFlow: 'column',
@@ -151,7 +187,7 @@ const useStyles = makeStyles({
 	}*/
 	joe: {
 		background: 'white',
-		height: '150px',
+		//height: '150px',
 		borderBottomLeftRadius: '20px',
 		borderBottomRightRadius: '20px',
 		zIndex: '5',
@@ -160,7 +196,8 @@ const useStyles = makeStyles({
 		borderTop: 'none',
 		position: 'absolute',
 		width: '100%',
-		boxSizing: 'border-box'
+		boxSizing: 'border-box',
+		paddingBottom: '10px'
 	},
 	buck: {
 		height: '2px',
@@ -174,7 +211,9 @@ const useStyles = makeStyles({
 		borderRadius: '20px',		
    },		
 	},
-  relative: { position: 'relative'}
+	bold: { fontWeight: 'bold', fontSize: '1.1rem'},
+  relative: { position: 'relative'},
+  jj: { marginTop: '10px' }
 })
 
 function App() {
@@ -263,31 +302,45 @@ function App() {
 					<div className={focusing ? classes.relative : classes.hidden}>
 						<div className={classes.joe}>
 							<div className={classes.buck}></div>
+							
+							<div className={classes.jj}>
+								<Grid container className={classes.recommendation} spacing={1}>
+									<Grid item>
+										<Search className={classes.searchIcon} />
+									</Grid>
+									
+									<Grid item>
+										<Typography className={classes.bold}>Recommendation</Typography>
+									</Grid>									
+								</Grid>
+								
+								<Grid container className={classes.recommendation} spacing={1}>
+									<Grid item>
+										<Search className={classes.searchIcon} />
+									</Grid>
+									
+									<Grid item>
+										<Typography className={classes.bold}>Recommendation 2</Typography>
+									</Grid>									
+								</Grid>		
+								
+								<Grid container className={classes.recommendation} spacing={1}>
+									<Grid item>
+										<Search className={classes.searchIcon} />
+									</Grid>
+									
+									<Grid item>
+										<Typography className={classes.bold}>Recommendation 3</Typography>
+									</Grid>							
+								</Grid>		
+								
+							  <MidButtons />																					
+							</div>
 						</div>
 					</div>
-					
-					<Grid container justifyContent="center" spacing={2} className={classes.midButtonsContainer}>
-						<Grid item>
-							<Button 
-								style={{ textTransform: 'none' }} 
-								variant="contained"
-								className={classes.midButton}
-							>
-								Google Search
-							</Button>
-						</Grid>
-						
-						<Grid item>
-							<Button 
-								style={{ textTransform: 'none' }} 
-								variant="contained"
-								className={classes.midButton}
-							>
-								I'm Feeling Lucky
-							</Button>
-						</Grid>						
-					</Grid>
-					
+		
+					<MidButtons />
+		
 					<Typography className={classes.offerings}>
 						Google offered in:
 						&nbsp;
